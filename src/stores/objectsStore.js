@@ -110,10 +110,7 @@ export const useObjectsStore = defineStore('objects', () => {
     setTimeout(() => {
       saveState() // save initial state(undo/redo)
     }, 100)
-    
-    // if (typeof window !== 'undefined') {
-    //   window.debugVectoriousSelection = debugSelection
-    // } // debugging stuff
+  
   }
 
   function setupCanvasEvents() {
@@ -202,37 +199,6 @@ export const useObjectsStore = defineStore('objects', () => {
     }
   }
 
-  // function debugSelection() {
-  //   if (!canvas.value) {
-  //     console.log('❌ No canvas')
-  //     return
-  //   }
-    
-  //   const activeObject = canvas.value.getActiveObject()
-  //   console.log('🔍 SELECTION DEBUG:')
-  //   console.log('📊 Store selectedObjects count:', selectedObjects.value.length)
-  //   console.log('📊 Store selectedObjects types:', selectedObjects.value.map(obj => obj?.type))
-  //   console.log('🎯 Canvas activeObject:', activeObject ? activeObject.type : 'none')
-    
-  //   if (activeObject && (activeObject.type === 'activeSelection' || activeObject.type === 'activeselection')) {
-  //     const objects = activeObject._objects || activeObject.getObjects() || []
-  //     console.log('🎯 ActiveSelection contains:', objects.length, 'objects')
-  //     console.log('🎯 ActiveSelection object types:', objects.map(obj => obj.type))
-  //   }
-    
-  //   console.log('✅ Store hasSelection:', hasSelection.value)
-  //   console.log('✅ Store isMultiSelection:', isMultiSelection.value)
-    
-  //   const beforeSync = selectedObjects.value.slice()
-  //   syncSelectionState()
-  //   const afterSync = selectedObjects.value
-    
-  //   if (beforeSync.length !== afterSync.length) { // force sync and see if anything changed
-  //     console.log('🔧 Selection corrected by manual sync:', beforeSync.length, '->', afterSync.length)
-  //   } else {
-  //     console.log('✅ Selection is consistent')
-  //   }
-  // }
 
   function handleObjectModified() { // trigger reactivity update 
     selectedObjects.value = [...selectedObjects.value]
@@ -1223,7 +1189,6 @@ export const useObjectsStore = defineStore('objects', () => {
     cutSelected,
     pasteFromClipboard,
     syncSelectionState,
-    // debugSelection,
     getDefaultName,
     exportToJSON,
     importFromJSON,
