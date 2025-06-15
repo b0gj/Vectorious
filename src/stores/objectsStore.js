@@ -527,6 +527,60 @@ export const useObjectsStore = defineStore('objects', () => {
     canvas.value.renderAll()
   }
 
+  function addCircleWithLines() {
+    if (!canvas.value) return
+    
+    saveState()
+    
+    const radius = 50
+    const centerX = 0
+    const centerY = 0
+    
+    const circle = new fabric.Circle({
+      left: centerX - radius,
+      top: centerY - radius,
+      radius: radius,
+      fill: '#D0E2F3',
+      stroke: '#000000',
+      strokeWidth: 1,
+      originX: 'left',
+      originY: 'top'
+    })
+    
+    const horizontalLine = new fabric.Line([centerX - radius, centerY, centerX + radius, centerY], {
+      stroke: '#000000',
+      strokeWidth: 1,
+      originX: 'left',
+      originY: 'top'
+    })
+    
+    const leftVerticalLine = new fabric.Line([centerX - radius, centerY - radius, centerX - radius, centerY + radius], {
+      stroke: '#000000',
+      strokeWidth: 1,
+      originX: 'left',
+      originY: 'top'
+    })
+    
+    const rightVerticalLine = new fabric.Line([centerX + radius, centerY - radius, centerX + radius, centerY + radius], {
+      stroke: '#000000',
+      strokeWidth: 1,
+      originX: 'left',
+      originY: 'top'
+    })
+    
+    const circleWithLines = new fabric.Group([circle, horizontalLine, leftVerticalLine, rightVerticalLine], {
+      left: 450,
+      top: 350,
+      selectable: true
+    })
+    
+    circleWithLines.name = generateUniqueName('Circle with Lines', 'group')
+    
+    canvas.value.add(circleWithLines)
+    canvas.value.setActiveObject(circleWithLines)
+    canvas.value.renderAll()
+  }
+
   function updateProperty(property, value) {
     if (!hasSelection.value) return
     
@@ -1183,6 +1237,7 @@ export const useObjectsStore = defineStore('objects', () => {
     addDiamond,
     addHeart,
     addQuarteredCircle,
+    addCircleWithLines,
     updateProperty,
     deleteSelected,
     copySelected,

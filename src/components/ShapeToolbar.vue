@@ -128,11 +128,17 @@ const objectsStore = useObjectsStore()
         </svg>
       </button>
 
-      <div class="flex items-center justify-center px-3 py-3 text-xs bg-gray-500 text-gray-400 rounded cursor-not-allowed opacity-50" title="Custom shape slot">
+      <button
+        @click="objectsStore.addCircleWithLines"
+        class="flex items-center justify-center px-3 py-3 text-xs bg-sky-600 text-white rounded hover:bg-sky-700 focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-800 transition-colors"
+        title="Add Circle with Lines"
+      >
+        
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          <circle cx="8" cy="8" r="6" stroke="#000000" fill="#D0E2F3" stroke-width="1"/>
+          <line x1="2" y1="8" x2="14" y2="8" stroke="#000000" stroke-width="1"/>
         </svg>
-      </div>
+      </button>
     </div>
   </div>
 </template> 
